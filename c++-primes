@@ -1,0 +1,43 @@
+#include <iostream>
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <time.h> 
+using namespace std;
+unsigned long long int checkprime(unsigned long long int n)
+{
+	bool isprime = true;
+	for (int i = 2; i <= (n / 2); ++i)
+	{
+		if (n%i == 0) {
+			isprime = false;
+		}
+	}
+	return isprime;
+}
+int main()
+{
+	time_t my_time = time(NULL);
+
+	// ctime() used to give the present time 
+	
+	unsigned long long int sum = 0;
+	int x = 0;
+	bool mybool = false;
+	for (int i = 1; i <= 2000000; ++i)
+	{
+		mybool = checkprime(i);
+		if (mybool == true) {
+			sum = sum + i;
+		}
+		if (x > 10000) {
+			x = 0;
+			cout << "i is " << i << " sum is " << (sum - 1)<<"\n";
+		}
+		x=x+1;
+
+		}
+	cout << "The final answer is " << (sum - 1) << "\n";
+	printf("%s", ctime(&my_time));
+	}
+
+
